@@ -106,17 +106,7 @@ const Login: React.FC = () => {
                     </button>
                 </div>
 
-                <div className="login-demo-info">
-                    <p className="demo-title">
-                        {language === 'ta' ? 'டெமோ கணக்கு' : 'Demo Account'}
-                    </p>
-                    <p className="demo-credentials">
-                        {language === 'ta' ? 'பயனர்பெயர்' : 'Username'}: <strong>admin</strong>
-                    </p>
-                    <p className="demo-credentials">
-                        {language === 'ta' ? 'கடவுச்சொல்' : 'Password'}: <strong>admin123</strong>
-                    </p>
-                </div>
+                {/* Demo info removed for production */}
             </div>
         </div>
     );
