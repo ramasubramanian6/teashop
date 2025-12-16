@@ -1,47 +1,50 @@
 @echo off
-echo Starting Git Fix Process...
+set LOGFILE=fix_log.txt
+echo Starting Git Fix Process... > %LOGFILE%
+echo. >> %LOGFILE%
 
-:: Configure Git Identity (Local to this repo) to ensure commit works
-echo Configuring local git identity...
-git config user.name "Tea Shop App"
-git config user.email "app@teashop.local"
+:: Configure Git Identity
+echo Configuring local git identity... | type CON >> %LOGFILE% 2>&1
+git config user.name "Tea Shop App" >> %LOGFILE% 2>&1
+git config user.email "app@teashop.local" >> %LOGFILE% 2>&1
 
-:: Initialize if not already
+:: Initialize
 if not exist .git (
-    echo Initializing Git...
-    git init
+    echo Initializing Git... | type CON >> %LOGFILE% 2>&1
+    git init >> %LOGFILE% 2>&1
 )
 
-:: Add all files
-echo Adding all files...
-git add .
+:: Add
+echo Adding all files... | type CON >> %LOGFILE% 2>&1
+git add . >> %LOGFILE% 2>&1
 
 :: Commit
-echo Committing...
-git commit -m "Auto-fix: Initial commit"
+echo Committing... | type CON >> %LOGFILE% 2>&1
+git commit -m "Auto-fix: Initial commit" >> %LOGFILE% 2>&1
 
-:: Rename branch to main
-git branch -M main
+:: Branch
+git branch -M main >> %LOGFILE% 2>&1
 
-:: Remove existing origin if any to avoid errors
+:: Remote
 git remote remove origin 2>nul
-
-:: Add remote
-echo Setting remote...
-git remote add origin https://github.com/ramasubramanian6/teashop.git
+echo Setting remote... | type CON >> %LOGFILE% 2>&1
+git remote add origin https://github.com/ramasubramanian6/teashop.git >> %LOGFILE% 2>&1
 
 :: Push
-echo Pushing to remote...
-git push -u origin main
+echo Pushing to remote... | type CON >> %LOGFILE% 2>&1
+echo (If this fails, it's likely a password/permission issue) >> %LOGFILE%
+
+git push -u origin main >> %LOGFILE% 2>&1
 
 if %ERRORLEVEL% NEQ 0 (
     echo.
-    echo [ERROR] PUSH FAILED!
-    echo Please check your internet connection or if you need to log in.
-    echo Try running this script again.
+    echo [ERROR] PUSH FAILED! check %LOGFILE%
+    echo PUSH FAILED >> %LOGFILE%
 ) else (
     echo.
     echo [SUCCESS] Repository pushed to GitHub.
+    echo SUCCESS >> %LOGFILE%
 )
 
+echo Done. Log saved to %LOGFILE%
 pause
