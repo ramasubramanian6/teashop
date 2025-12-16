@@ -1,0 +1,79 @@
+.milk-tracking-page {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.milk-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.milk-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md);
+    background: linear-gradient(135deg, hsla(207, 90%, 54%, 0.1) 0%, hsla(207, 90%, 54%, 0.05) 100%);
+    border: 2px solid var(--info);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+}
+
+.milk-total-value {
+    font-size: 1.5rem;
+    color: var(--info);
+}
+
+.milk-stats {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    transition: all var(--transition-base);
+}
+
+.stat-item:hover {
+    transform: translateX(4px);
+    border-color: var(--info);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+}
+
+.stat-info {
+    flex: 1;
+}
+
+.stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--info);
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.highlight {
+    font-weight: 600;
+    color: var(--info);
+}
